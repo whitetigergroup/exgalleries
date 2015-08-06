@@ -1,0 +1,2 @@
+# exgalleries
+eXgalleries plugins
