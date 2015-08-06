@@ -2,6 +2,7 @@
 
 Plugin is the XML-file with next simple format:
 
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <library name="exgalleries">
     <name>name-of-plugin</name>
