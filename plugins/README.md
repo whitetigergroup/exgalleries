@@ -16,6 +16,20 @@ Plugin is the XML-file with next simple format:
 	Description of site.
     ]]></description>
     <author>Author and his email</author>
+    <keywords>keywords</keywords>
+    <gallery
+        name="gallery1"
+        link="http://link-to-site/path-to-gallery1/"
+        image="http://link-to-site/path-to-gallery1/cover-of-gallery1.jpg">
+		Name of gallery 1
+    </gallery>
+    <gallery
+        name="gallery2"
+        link="http://link-to-site/path-to-gallery2/"
+        image="http://link-to-site/path-to-gallery2/cover-of-gallery2.jpg">
+		Name of gallery 2
+    </gallery>
+    ...other galleries maybe...
     <jsmain><![CDATA[
 ```    
 ```javascript
@@ -52,17 +66,4 @@ function GetItem(id) {
 ```xml
         ]]>
     </jsmain>
-    <keywords>keywords</keywords>
-    <gallery
-        name="gallery1"
-        link="http://link-to-site/path-to-gallery1/"
-        image="http://link-to-site/path-to-gallery1/cover-of-gallery1.jpg">
-		Name of gallery 1
-    </gallery>
-    <gallery
-        name="gallery2"
-        link="http://link-to-site/path-to-gallery2/"
-        image="http://link-to-site/path-to-gallery2/cover-of-gallery2.jpg">
-		Name of gallery 2
-    </gallery>
 </library>
