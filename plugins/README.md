@@ -16,6 +16,7 @@ Plugin is the XML-file with next simple format:
     ]]></description>
     <author>Author and his email</author>
     <jsmain><![CDATA[
+    ```
     ```javascript
 function GetItem(id) {
 	var res=false;
@@ -45,7 +46,9 @@ function GetItem(id) {
 				//ARG6 - creation date
 		}
 	}
-};        
+};
+```
+```xml
         ]]>
     </jsmain>
     <keywords>keywords</keywords>
