@@ -9,6 +9,7 @@ Plugin is the XML-file with next simple format:
     <title>Name of plugin</title>
     <link>http://link-to-gallery/</link>
     <image>http://link-to-gallery/cover.jpg</image>
+    <source>http://link-to-your-site/this-plugin.xml</source>
     <version>1.0</version>
     <min_api>1.0</min_api>
     <description><![CDATA[
