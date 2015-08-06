@@ -29,7 +29,7 @@ function GetItem(id) {
 		if (Interactor.FindIdByLink(find[1]) == 0) {//LINK FOUND, CHECK IF IT ALREADY EXISTS
 			res = Interactor.AddItem(id, find[1]);
 			//Creates the item. Should get next arguments:
-			//ID - id of parent item, ARG1 - link to page
+			//ID - id of parent item, FIND[1] - link to page
 			Interactor.Print("New picture ID=" + res + ", URL=" + find[1]);
 		} else {
 			Interactor.Print("Skip because of exists item with URL=" + find[1]);
@@ -39,12 +39,12 @@ function GetItem(id) {
 		var parent = Interactor.GetParentId(id);//GETTING ID OF PARENT ITEM
 		var pattern = /REGEXP PATTERN FOR SEARCH LINK TO PICTURE AND METAINFO WITHIN PAGE/i;
 		if (find = req.match(pattern)) { // search for link to next part of
-			res = Interactor.SaveItem(id, parent, find[1], find[3], find[4],
-				find[2], 0);
+			res = Interactor.SaveItem(id, parent, find[1], find[2], find[3],
+				find[4], find[5]);
 				//Saves the item. Should get next arguments:
-				//ID - id of item, PARENT - id of parent item, ARG2 - link to picture,
-				//ARG3 - title of picture, ARG4 - author, ARG5 - description,
-				//ARG6 - creation date
+				//ID - id of item, PARENT - id of parent item, FIND[1] - link to picture,
+				//FIND[2] - title of picture, FIND[3] - author, FIND[4] - description,
+				//FIND[5] - creation date (usually should be 0)
 		}
 	}
 };
