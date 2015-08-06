@@ -16,8 +16,8 @@ Plugin is the XML-file with next simple format:
     ]]></description>
     <author>Author and his email</author>
     <jsmain><![CDATA[
-    ```
-    ```javascript
+```    
+```javascript
 function GetItem(id) {
 	var res=false;
 	var url = Interactor.GetLink(id);
