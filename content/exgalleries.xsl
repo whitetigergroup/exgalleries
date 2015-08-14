@@ -32,5 +32,27 @@
 	</body>
 	</html>
 </xsl:template>
+<xsl:template match="galleries">
+	<a href="#" onclick="toggle('galleries');">Show/hide genres</a>
+	<div style="display:none" id="galleries">
+	<table>
+		<tr bgcolor="#9acd32">
+			<th></th>
+			<th>Genre</th>
+		</tr>
+		<xsl:for-each select="gallery"><tr>
+			<td><xsl:value-of select="position()"/></td>
+			<td>
+				<a>
+				<xsl:attribute name="link">
+					<xsl:value-of select="link"/>
+				</xsl:attribute>
+					<xsl:value-of select="@name"/>
+				</a>
+			</td>
+		</tr></xsl:for-each>  
+	</table>
+	</div>
+</xsl:template>
 
 </xsl:stylesheet>
