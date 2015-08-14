@@ -5,7 +5,6 @@
 <p><strong><xsl:value-of select="//title"/></strong></p>
 <p><xsl:value-of select="//author"/></p>
 </xsl:template>
-</xsl:stylesheet>
-
 
 </xsl:stylesheet>
+
