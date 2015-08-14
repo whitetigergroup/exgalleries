@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library name="exgalleries">
+    <name>
+comixbook-ru
+    </name>
+    <title>
+ComixBook
+    </title>
+    <link>
+https://comixbook.ru/
+    </link>
+    <image>
+https://comixbook.ru/img/rat-min.png
+    </image>
+    <source>
+
+    </source>
+    <version>
+1.0
+    </version>
+    <min_api>
+1.0
+    </min_api>
+    <description><![CDATA[
+Shows comics from Comixbook.ru.
+	]]>
+    </description>
+    <author>
+Somebody ;-)
+    </author>
+    <jsmain><![CDATA[
+function GetItem(id) {
+	var res=false;
+	var url = Interactor.GetLink(id);
+	Interactor.Print("Update item ID=" + id);
+
+	var req = Interactor.RequestGet(url);
+
+	var pattern = /<div class="comix-category-item img-rounded"[\s\S]*?<a href="(.*?)"/gi;
+
+	while ((find = pattern.exec(req)) != null) {
+		var link="https://comixbook.ru/"+find[1];
+		
+	Interactor.Print("New picture link=" +link);
+		
+		if (Interactor.FindIdByLink(link) == 0) {
+			res = Interactor.AddItem(id, link);
+			Interactor.Print("New picture ID=" + res + ", URL=" + link);
+		} else {
+			Interactor.Print("Skip because of exists item with URL=" + link);
+		}
+	}
+//	Interactor.Print("Update2=" +id);
+
+	if(!res){
+//pattern for album
+		var pattern=/<h1>(.*?)<\/h1>[\s\S]*<img class="img-responsive img-round" src="(.*?)"/i;	
+		var parent = Interactor.GetParentId(id);
+
+		if (find = req.match(pattern)) { // search for link to next part of
+			res = Interactor.SaveItem(id, parent, find[2], find[1], "","", 0);
+			Interactor.Print("Save ID=" + id + ", parent="+parent+", URL=" + find[2]);
+	
+//pattern for pictures	
+			var pattern2=/<div class="col-md-15 col-xs-15 thumb-item img-rounded">\s+<a href="(.*?)"[\s\S]*?alt="(.*?)"/gi;
+
+			while ((find = pattern2.exec(req)) != null) {
+				var link=find[1];
+				var res2;
+				if (Interactor.FindIdByLink(link) == 0) {
+					res2 = Interactor.AddItem(id, link);
+					var res3 = Interactor.SaveItem(res2, id, find[1], find[2], "","", 0);
+					//Interactor.FinishItem(res2);
+					Interactor.Print("Add-n-save picture ID=" + res2 + ", parent="+id+", URL=" + link);
+				} else {
+					Interactor.Print("Skip because of exists picture with URL=" + link);
+				}
+			}
+
+		}
+
+	}
+
+};        
+        ]]>
+    </jsmain>
+
+    <keywords>
+comics comix comixbook
+    </keywords>
+
+    <gallery
+        name="howard-the-duck"
+        link="https://comixbook.ru/comix/marvel-comics/howard-the-duck/"
+        image="https://comixbook.ru/assets/components/phpthumbof/cache/image-cache/images/covers/marvel/howard-the-duck.e16b918d.jpg" >
+Howard the Duck
+    </gallery>
+    
+    <gallery
+        name="umbrella-academy"
+        link="https://comixbook.ru/comix/dark-horse-comics/umbrella-academy/"
+        image="https://comixbook.ru/assets/components/phpthumbof/cache/image-cache/images/covers/darkhorse/umbrella-academy.bb3d65d3.jpg" >
+Umbrella Academy
+    </gallery>
+
+    <gallery
+        name="adventure-time"
+        link="https://comixbook.ru/comix/fa-and-boom-comics/adventure-time/"
+        image="https://comixbook.ru/assets/components/phpthumbof/cache/image-cache/images/covers/boom/adventure-time.30e620d6.jpg" >
+Adventure Time
+    </gallery>
+
+    <gallery
+        name="infinite-crisis"
+        link="https://comixbook.ru/comix/dc-comics/infinite-crisis-fight-for-the-multiverse/"
+        image="https://comixbook.ru/assets/components/phpthumbof/cache/image-cache/images/covers/dc/infinite-crisis-fftm.4b512096.jpg" >
+Infinite Crisis: Fight for the Multiverse
+    </gallery>
+
+    <gallery
+        name="heart-in-a-box"
+        link="https://comixbook.ru/comix/dark-horse-comics/heart-in-a-box/"
+        image="https://comixbook.ru/assets/components/phpthumbof/cache/image-cache/images/covers/darkhorse/heart-in-a-box.1397282f.jpg" >
+Heart in a Box
+    </gallery>
+
+    <gallery
+        name="dead-body-road"
+        link="https://comixbook.ru/comix/image/dead-body-road/"
+        image="https://comixbook.ru/assets/components/phpthumbof/cache/image-cache/images/covers/image/dead-body-road.029d4cd5.jpg" >
+Dead, Body and Road
+    </gallery>
+
+    <gallery
+        name="ant-man"
+        link="https://comixbook.ru/comix/marvel-comics/ant-man/"
+        image="https://comixbook.ru/assets/components/phpthumbof/cache/image-cache/images/covers/marvel/ant-man.5349476d.jpg" >
+Ant Man
+    </gallery>
+
+    <gallery
+        name="irredeemable-ant-man"
+        link="https://comixbook.ru/comix/marvel-comics/ant-man/irredeemable-ant-man/"
+        image="https://comixbook.ru/assets/components/phpthumbof/cache/image-cache/images/covers/marvel/irredeemable-ant-man.f7d0c5ac.jpg" >
+Irredeemable Ant Man
+    </gallery>
+
+    <gallery
+        name="cataclysm"
+        link="https://comixbook.ru/comix/marvel-comics/cataclysm/"
+        image="https://comixbook.ru/assets/components/phpthumbof/cache/image-cache/images/covers/marvel/cataclysm.46aa847f.jpg" >
+Cataclysm
+    </gallery>
+
+    <gallery
+        name="cafe-rouge-never-let-me-go"
+        link="https://comixbook.ru/comix/other/cafe-rouge-never-let-me-go/"
+        image="https://comixbook.ru/assets/components/phpthumbof/cache/image-cache/images/covers/other/cafe-rouge-never-let-me-go.8729184a.jpg" >
+Cafe Rouge - Never Let Me Go
+    </gallery>
+
+    <gallery
+        name="wolverines"
+        link="https://comixbook.ru/comix/marvel-comics/x-men/wolverines/"
+        image="https://comixbook.ru/assets/components/phpthumbof/cache/image-cache/images/covers/marvel/wolverines.27862a5e.jpg" >
+Wolverines
+    </gallery>
+
+    <gallery
+        name="death-of-wolverine"
+        link="https://comixbook.ru/comix/marvel-comics/x-men/death-of-wolverine/"
+        image="https://comixbook.ru/assets/components/phpthumbof/cache/image-cache/images/covers/marvel/death-of-wolverine.0055d7b6.jpg" >
+Death of Wolverine
+    </gallery>
+
+    <gallery
+        name="secret-wars"
+        link="https://comixbook.ru/comix/marvel-comics/secret-wars/"
+        image="https://comixbook.ru/assets/components/phpthumbof/cache/image-cache/images/covers/marvel/secret-wars.19933ba9.jpg" >
+Secret Wars
+    </gallery>
+    
+    <gallery
+        name="outcast"
+        link="https://comixbook.ru/comix/image/outcast/"
+        image="https://comixbook.ru/assets/components/phpthumbof/cache/image-cache/images/covers/image/outcast.763b38a4.jpg" >
+Outcast
+    </gallery>
+    
+    <gallery
+        name="earthworm-jim"
+        link="https://comixbook.ru/comix/marvel-comics/earthworm-jim/"
+        image="https://comixbook.ru/assets/components/phpthumbof/cache/image-cache/images/covers/marvel/earthworm-jim.4eb1ed9b.jpg" >
+Earthworm Jim
+    </gallery>
+    
+    <gallery
+        name="justice-league-dark"
+        link="https://comixbook.ru/comix/dc-comics/justice-league-dark/"
+        image="https://comixbook.ru/assets/components/phpthumbof/cache/image-cache/images/covers/dc/justice-league-dark.561373a7.jpg" >
+Justice League Dark
+    </gallery>
+    
+    <gallery
+        name="arkham-manor"
+        link="https://comixbook.ru/comix/dc-comics/batman/arkham-manor/"
+        image="https://comixbook.ru/assets/components/phpthumbof/cache/image-cache/images/covers/dc/arkham-manor.19764d18.jpg" >
+Arkham Manor
+    </gallery>
+    
+    <gallery
+        name="ultimates"
+        link="https://comixbook.ru/comix/marvel-comics/cataclysm/ultimates/"
+        image="https://comixbook.ru/assets/components/phpthumbof/cache/image-cache/images/covers/marvel/cataclysm-ultimates.5857f3f4.jpg" >
+Ultimates
+    </gallery>
+    
+    <gallery
+        name="survive"
+        link="https://comixbook.ru/comix/marvel-comics/cataclysm/survive!/"
+        image="https://comixbook.ru/assets/components/phpthumbof/cache/image-cache/images/covers/marvel/cataclysm-survive.774921d4.jpg" >
+Survive!
+    </gallery>
+    
+    <gallery
+        name="cataclysm-x-man"
+        link="https://comixbook.ru/comix/marvel-comics/cataclysm/cataclysm-x-man/"
+        image="https://comixbook.ru/assets/components/phpthumbof/cache/image-cache/images/covers/marvel/cataclysm-x-men.7eb56a82.jpg" >
+Cataclysm X-man
+    </gallery>
+    
+    <gallery
+        name="cataclysm-spider-man"
+        link="https://comixbook.ru/comix/marvel-comics/cataclysm/cataclysm-spider-man/"
+        image="https://comixbook.ru/assets/components/phpthumbof/cache/image-cache/images/covers/marvel/cataclysm-ultimate-spider-man.a4ca0136.jpg" >
+Cataclysm Spider-man
+    </gallery>
+    
+    <gallery
+        name="last-stand"
+        link="https://comixbook.ru/comix/marvel-comics/cataclysm/last-stand/"
+        image="https://comixbook.ru/assets/components/phpthumbof/cache/image-cache/images/covers/marvel/last-stand.86150cce.jpg" >
+Last Stand
+    </gallery>
+    
+    <gallery
+        name="cataclysm"
+        link="https://comixbook.ru/comix/marvel-comics/cataclysm/cataclysm/"
+        image="https://comixbook.ru/assets/components/phpthumbof/cache/image-cache/images/covers/marvel/cataclysm.46aa847f.jpg" >
+Cataclysm
+    </gallery>
+    
+    <gallery
+        name="1001-arabian-nights-adventures-of-sinbad"
+        link="https://comixbook.ru/comix/zenescope-comics/1001-arabian-nights-adventures-of-sinbad/"
+        image="https://comixbook.ru/assets/components/phpthumbof/cache/image-cache/images/covers/zenescope/1001-anaos.1afeb467.jpg" >
+1001 Arabian Nights. Adventures of Sinbad
+    </gallery>
+    
+</library>
