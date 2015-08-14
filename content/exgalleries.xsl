@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
-<xsl:template match="library">
+<xsl:template match="/">
 	<html>
 	<head>
-		<title><xsl:value-of select="title"/></title>
+		<title><xsl:value-of select="//title"/></title>
 		<script type="text/javascript"><![CDATA[
 			function toggle(id) {
 				var e = document.getElementById(id);
@@ -24,35 +24,13 @@
 	</head>
 	<body>
 
-	<h1><xsl:value-of select="title"/></h1>
-	<p><xsl:value-of select="description" disable-output-escaping="yes"/></p>
+	<h1><xsl:value-of select="//title"/></h1>
+	<p><xsl:value-of select="//description" disable-output-escaping="yes"/></p>
 
 	<xsl:apply-templates select="galleries" />
 
 	</body>
 	</html>
-</xsl:template>
-<xsl:template match="galleries">
-	<a href="#" onclick="toggle('galleries');">Show/hide genres</a>
-	<div style="display:none" id="galleries">
-	<table>
-		<tr bgcolor="#9acd32">
-			<th></th>
-			<th>Genre</th>
-		</tr>
-		<xsl:for-each select="gallery"><tr>
-			<td><xsl:value-of select="position()"/></td>
-			<td>
-				<a>
-				<xsl:attribute name="link">
-					<xsl:value-of select="link"/>
-				</xsl:attribute>
-					<xsl:value-of select="@name"/>
-				</a>
-			</td>
-		</tr></xsl:for-each>  
-	</table>
-	</div>
 </xsl:template>
 
 </xsl:stylesheet>
