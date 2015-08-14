@@ -13,7 +13,7 @@ https://comixbook.ru/
 https://comixbook.ru/img/rat-min.png
     </image>
     <source>
-
+https://raw.githubusercontent.com/whitetigergroup/exgalleries/master/plugins/comixbook.xml
     </source>
     <version>
 1.0
