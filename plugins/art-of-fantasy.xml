@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="https://raw.githubusercontent.com/whitetigergroup/exgalleries/master/content/exgalleries.xsl" ?>
-<library name="exgalleries">
 
+<library name="exgalleries">
     <name>
 art-of-fantasy
     </name>
