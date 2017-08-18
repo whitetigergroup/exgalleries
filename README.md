@@ -6,6 +6,6 @@ eXgalleries is an Android application for easy fetching and looking pictures suc
 
 You can get eXgalleries free in the Google Play Store: https://play.google.com/store/apps/details?id=ru.wtg.exgalleries.
 
-#plugins
+# plugins
 
-Plugin is the simple XML-file with some definitions and Javascript-function for fetching and parsing pages and pictures. You can see a working example here.
+Plugin is the simple XML-file with some definitions and Javascript-function for fetching and parsing pages and pictures. You can see an example here.
